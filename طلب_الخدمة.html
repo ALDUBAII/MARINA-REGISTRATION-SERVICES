@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب خدمة</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        form { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input, textarea, button { width: 100%; margin-top: 10px; padding: 10px; }
+        button { background-color: green; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2>طلب خدمة</h2>
+    <form id="orderForm">
+        <input type="text" id="name" placeholder="الاسم" required>
+        <input type="text" id="service" placeholder="نوع الخدمة المطلوبة" required>
+        <textarea id="details" placeholder="تفاصيل الطلب" required></textarea>
+        <button type="button" onclick="sendToWhatsApp()">إرسال الطلب</button>
+    </form>
+
+    <script>
+        function sendToWhatsApp() {
+            var name = document.getElementById("name").value;
+            var service = document.getElementById("service").value;
+            var details = document.getElementById("details").value;
+            
+            var phone = "966500000000"; // ضع رقم واتساب الخاص بك مع كود الدولة
+            var message = مرحبا، اسمي ${name} وأرغب في طلب خدمة: ${service}. التفاصيل: ${details};
+            
+            var url = https://wa.me/${phone}?text=${encodeURIComponent(message)};
+            window.open(url, "_blank");
+        }
+    </script>
+
+</body>
+</html>
